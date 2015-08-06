@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"jsx": "react",
+		"target": "ES5"
+	},
+	"files": [
+		"main.tsx"
+	]
+}

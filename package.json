@@ -1,0 +1,20 @@
+{
+  "name": "tsx-sample",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e tsx -x \"tsc && webpack --entry ./main.js --output-file ./index.js\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.13.3",
+    "todomvc-common": "^1.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.4.0",
+    "webpack": "^1.10.5"
+  }
+}
