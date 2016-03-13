@@ -41,10 +41,16 @@ const Todo = React.createClass<any, {}>({
         };
 
         const getNameSpan = () => {
-            return <span onDoubleClick={startEditing}>{this.state.currentName}</span>;
+            return <label onDoubleClick={startEditing}>{this.state.currentName}</label>;
         };
 
-        return <div>{this.state.editing ? getInput() : getNameSpan()}</div>;
+        return (
+            <div className='view'>
+                <input className='toggle' type='checkbox' />
+                {this.state.editing ? getInput() : getNameSpan()}
+                <button className='destroy'></button>
+            </div>
+        );
     }
 });
 
