@@ -1,5 +1,3 @@
-/// <reference path="typings/react/react.d.ts"/>
-
 import React = require('react');
 
 const Todo = React.createClass<any,{}>({
@@ -13,19 +11,19 @@ const Todo = React.createClass<any,{}>({
 	},		
 	
 	render: function() {
-		const startEditing = function() {
-			this.setState({
+		const startEditing = ()=> {
+			this.setState({    
 				editing: true
 			});
-		}.bind(this);
+		};
 		
-		const updateName = function(e) {
+		const updateName = (e) => {
 			this.setState({
 				newName: e.target.value
 			});
-		}.bind(this);
+		};
 		
-		const stopEditing = function(e) {
+		const stopEditing = (e) => {
 			if(/\S/.test(e.target.value)) {
 				return this.setState({
 					editing:false,
@@ -37,7 +35,7 @@ const Todo = React.createClass<any,{}>({
 			this.setState({
 				editing:false
 			});
-		}.bind(this);
+		};
 		
 		const getInput = function() {
 			return <input type="text" value={this.state.newName} onChange={updateName} onBlur={stopEditing} />;

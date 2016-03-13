@@ -1,7 +1,5 @@
-/// <reference path="typings/react/react.d.ts"/>
-
 import React = require('react');
-import {Todo} from './todo';
+import {Todo} from './todo.tsx';
 
 const App = React.createClass<any,{}>({
 	
