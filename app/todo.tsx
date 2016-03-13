@@ -44,7 +44,7 @@ const Todo = React.createClass<any, {}>({
             return <span onDoubleClick={startEditing}>{this.state.currentName}</span>;
         };
 
-        return <li key={this.props.todo.key}>{this.state.editing ? getInput() : getNameSpan()}</li>;
+        return <div>{this.state.editing ? getInput() : getNameSpan()}</div>;
     }
 });
 

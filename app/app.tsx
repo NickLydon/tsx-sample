@@ -34,7 +34,7 @@ const App = React.createClass<any, {}>({
         return (
             <div>
                 <ul>{this.state.todos.map(function(todo) {
-                    return <Todo todo={todo} />;
+                    return <Todo key={todo.key} todo={todo} />;
                 })}</ul>
                 <input type='text' value={this.state.newTodoName} onChange={handleNameChange} onBlur={handleNewTodo} />
             </div>
