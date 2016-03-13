@@ -3,7 +3,7 @@ import {Todo} from './todo.tsx';
 
 const App = React.createClass<any,{}>({
 	
-	getInitialState: function() { 
+	getInitialState() { 
 		return {
 			todos: [],
 			newTodoName: '',
@@ -11,9 +11,8 @@ const App = React.createClass<any,{}>({
 		};
 	},	
 	
-	render: function() {
-		
-		const handleNewTodo = function(e) {
+	render() {		
+		const handleNewTodo = (e) => {
 			if(/\S/.test(e.target.value)) {
 				this.setState({
 					todos: this.state.todos.concat([{
@@ -26,13 +25,13 @@ const App = React.createClass<any,{}>({
 					newTodoName: ''
 				});
 			}
-		}.bind(this);
+        };
 		
-		const handleNameChange = function(e) {
+		const handleNameChange = (e) => {
 			this.setState({
 				newTodoName: e.target.value
 			});						
-		}.bind(this);
+        };
 						
 		return (
 			<div>

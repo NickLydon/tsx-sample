@@ -2,7 +2,7 @@ import React = require('react');
 
 const Todo = React.createClass<any,{}>({
 	
-	getInitialState: function() {
+	getInitialState() {
 		return {
 			editing: false,
 			newName: this.props.todo.name,
@@ -10,8 +10,8 @@ const Todo = React.createClass<any,{}>({
 		};
 	},		
 	
-	render: function() {
-		const startEditing = ()=> {
+	render() {
+		const startEditing = () => {
 			this.setState({    
 				editing: true
 			});
@@ -37,13 +37,13 @@ const Todo = React.createClass<any,{}>({
 			});
 		};
 		
-		const getInput = function() {
+		const getInput = () => {
 			return <input type="text" value={this.state.newName} onChange={updateName} onBlur={stopEditing} />;
-		}.bind(this);
+		};
 		
-		const getNameSpan = function() {
+		const getNameSpan = () => {
 			return <span onDoubleClick={startEditing}>{this.state.currentName}</span>;
-		}.bind(this);
+        };
 		
 		return <li key={this.props.todo.key}>{this.state.editing ? getInput() : getNameSpan()}</li>;
 	}
