@@ -1,7 +1,16 @@
 /// <reference path="../typings/browser.d.ts" />
 
-import React = require('react');
-import ReactDOM = require('react-dom');
-import {App} from './app.tsx';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import Table from './components/Table.tsx';
+import table from './reducers/table.ts';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('container'));
+const store = createStore(table);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Table />
+    </Provider>,
+    document.getElementById('container'));
