@@ -16,7 +16,8 @@ const TableCell = ({ cell, onCellValueChange }) =>
 const TableRow = ({ columns, onCellValueChange }) =>
     <tr>
         {
-            columns.map(c => <TableCell cell={c} onCellValueChange={onCellValueChange} />)
+            columns.map((cell, column) => 
+                <TableCell key={column} cell={cell} onCellValueChange={onCellValueChange} />)
         }
     </tr>;
 
@@ -24,11 +25,12 @@ const Table = ({ table, onCellValueChange }) =>
     <table>
         <thead>
             <tr>
-                {columnHeaders.map(h => <th>{h}</th>)}
+                {columnHeaders.map(h => <th key={h}>{h}</th>)}
             </tr>
         </thead>
         <tbody>
-            { table.map((columns, row) => <TableRow columns={columns} onCellValueChange={onCellValueChange} /> )}
+            { table.map((columns, row) => 
+                <TableRow key={row} columns={columns} onCellValueChange={onCellValueChange} /> )}
         </tbody>
     </table>;
 
