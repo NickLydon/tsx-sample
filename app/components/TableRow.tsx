@@ -2,15 +2,30 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import TableCell from './TableCell.tsx';
 
-const TableRow = ({ columns, row }) => {
-    return (
-        <tr>
-            {
-                columns.map((cell, column) => 
-                    <TableCell key={column} row={row} column={column} />)
-            }
-        </tr>
-    );
+class TableRow extends React.Component<{ columns, row }, any> {
+
+    /**
+     *
+     */
+    constructor() {
+        super();
+        this.shouldComponentUpdate = this.shouldComponentUpdate.bind(this);
+    }
+
+    shouldComponentUpdate({ columns }) {
+        return !columns.equals(this.props.columns);
+    }
+
+    render() {
+        return (
+            <tr>
+                {
+                    this.props.columns.map((cell, column) => 
+                        <TableCell key={column} row={this.props.row} column={column} />)
+                }
+            </tr>
+        );
+    }
 };
 
 const mapStateToProps = (table, { row }) => {

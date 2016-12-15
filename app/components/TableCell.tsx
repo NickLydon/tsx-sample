@@ -2,24 +2,43 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import actions from '../actions.ts';
 
-const TableCell = ({ cell, row, column, onCellValueChange }) => {
-    return (
-        <td>
-            <input
-                type='text'
-                value={cell.get('value')}
-                onChange={function(e) {
-                    onCellValueChange(row, column, ((e.target as HTMLInputElement).value));
-                }} />
-        </td>
-    );
+class TableCell extends React.Component<{ cell, onCellValueChange }, any> {
+    /**
+     *
+     */
+    constructor() {
+        super();
+        this.shouldComponentUpdate = this.shouldComponentUpdate.bind(this);
+    }
+
+    shouldComponentUpdate({ cell }) {
+        return !cell.equals(this.props.cell);
+    }
+
+    render() { 
+        const {cell, onCellValueChange} = this.props;
+        const get = name => cell.get(name);
+        const row = get('row');
+        const column = get('column');
+        const value = get('value');
+
+        return (
+            <td>
+                <input
+                    type='text'
+                    value={value}
+                    onChange={function(e) {
+                        onCellValueChange(row, column, ((e.target as HTMLInputElement).value));
+                    }} />
+            </td>
+        );
+    }
 };
 
 const mapStateToProps = (table, { row, column }) => {
+    const cell = table.getIn([row, column]);
     return {
-        cell: table.getIn([row, column]),
-        row,
-        column
+        cell,
     };
 };
 
